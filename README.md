@@ -1,6 +1,6 @@
-**Pylistfm**
+#**Pylistfm**#
 
-The goal of pylistfm is to offer a means for the creation of playlists where
+  The goal of pylistfm is to offer a means for the creation of playlists where
 the probability of any given song or artist being added to a playlist can be
 weighted with the data available from last.fm on the song or artist. These
 playlists are meant to offer an alternative to hitting the 'randomize' button
@@ -51,24 +51,24 @@ choice is weighted by the average of the ratio values of the track objects in
 the artist object's .tracks field.
 
 
-Technical Documentation:
+##**Technical Documentation:**##
 
   * **lfmgather.py**
 
     * Primary definitions file. Run this in an interactive console to run
 pylistfm.
 
-    * Class Hybrid_Track definition. Hybrid_Track objects are what represent
+    * Class Hybrid\_Track definition. Hybrid\_Track objects are what represent
 processed songs, storing data in the following fields: track (track name),
-artist_name, album_name, location, itunes_id, track_number, track_count,
-file_duration, bit_rate, sample_rate, playcount, artist (stores a
+artist\_name, album\_name, location, itunes\_id, track\_number, track\_count,
+file\_duration, bit\_rate, sample\_rate, playcount, artist (stores a
 pylast.Artist object reference), album (stores a pylast.Album object
-reference), listener_count (int), lfm_playcount (int). With all exceptions
+reference), listener\_count (int), lfm\_playcount (int). Excluding the exceptions
 noted above, each of these fields stores a unicode string assuming that data
 exists for that field. If data does not exist for a field, it contains a
 reference to a NoneType object.
 
-    * get_lfm_info(itunes_library) accepts a parameter containing a
+    * get\_lfm\_info(itunes\_library) accepts a parameter containing a
 pylistxml.Itunes_Library object. Converts each track and artist object in the
 Itunes_Library object into Hybrid_Track and pylast.Artist objects,
 respectively. Saves a file containing a list of pylast.Artist objects, with
@@ -142,11 +142,7 @@ make_playlist. Uses the selection algorithm described above as Algorithm 2.
 
 Future Development:
 
-I plan to continue working on this project, eventually releasing it to the
-open source community once it is in a state which allows enough ease of use
-and value in the playlists it generates that I would consider the program to
-be worth using by the general public. I would like to re-build the user
-interface for the application, allowing all actions currently possible from
+I would like to re-build the user interface for the application, allowing all actions currently possible from
 the command-line to be possible through an intuitive GUI. I would also like to
 look into using a SQL database to store all data used by the application.
 Currently it only uses a SQL database to store cached results of API calls to
@@ -156,7 +152,9 @@ numbers of entries than the sqlite3 module. I would like to create a pandora
 tracks to the previous track into the song choice decision-making. I would
 also like to find a more efficient way to determine when new tracks and
 artists are added to iTunes and then process those objects, adding them to the
-'artists.db' database. I would also like to implement song bit rates into
+'artists.db' database. It would be nice to find a way to integrate directly to
+iTunes, without the need for the intermediate step of a library xml export.
+I would also like to implement song bit rates into
 account when parsing the iTunes xml export. Currently, it accepts the first
 item encountered of a particular song name and particular track name, ignoring
 any duplicate tracks, potentially ones with higher audio quality.

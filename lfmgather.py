@@ -34,7 +34,7 @@ import time #used by timefunc() and makeprogress()
 import os #used to get current dir for NETWORK.enable_caching call. and in 'progress' checking
 import filters
 NETWORK = pylast.get_lastfm_network(datamgmt.API_KEY,datamgmt.API_SECRET,datamgmt.SESSION_KEY)
-NETWORK.enable_caching(os.getcwd()+'\\'+'cachingdb.db')
+NETWORK.enable_caching(os.getcwd()+os.sep+'cachingdb.db')
 
 class Hybrid_Track(pylistxml.Itunes_Track,pylast.Track):
     def __init__(self,itunes_track):
@@ -86,14 +86,16 @@ def get_lfm_info(itunes_library):
     report_at = [5,10,20,30,40,50,60,70,80,90,1000]
     total_count = len(tracks)
 
-    #list for failed tracks
+    #lists for fail/success tracks
     fails = []
+    no_fail=[]
     
     #make each Itunes_Track in tracks into a Hybrid_Track
     for count in range(total_count):
         try:
             try:
                 tracks[count] = Hybrid_Track(tracks[count])
+                no_fail.append(tracks[count])
             except pylast.WSError:
                 print 'error with', unicode(tracks[count])
                 fails.append(tracks[count])
@@ -107,7 +109,14 @@ def get_lfm_info(itunes_library):
             report_at.remove(report_at[0])
     print 'Progress: 100 %'
     print 'Total failed tracks: %d' % (len(fails))
-    
+
+    #TEST-CODE:
+    checksum = len(no_fail)+len(fails)
+    if checksum != len(tracks):
+        print 'ERROR HAPPEN FFFFFF'
+
+    tracks = no_fail
+        
     #save list of Itunes_Artist objects containing Hybrid_Track objects within their tracks field.
     #10/12/09: currently saves list of Hybrid_Track objects
     try:
@@ -175,6 +184,7 @@ def process_artist(artist,v=False): #get playcount info for one artist. used by 
         print 'Getting info on each track by', unicode(artist.get_name())
     newartist = artist
     newartist.sum_playcount = 0
+    newartist.network = NETWORK
     newartist.playcount=newartist.get_playcount()
     newtracks = []
     for track in artist.tracks:
