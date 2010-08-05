@@ -48,11 +48,11 @@ def make_m3u(songs):
         f.write(unicode(newstring))
     f.close()
 def make_m3u_osx(songs):
-    f = open('playlistnew.m3u','w')
+    f = codecs.open('playlistnew.m3u','w','utf-8')
     f.write('#EXTM3U\n')
     for song in songs:
         newstring = '#EXTINF:'+str((int(song.file_duration) / 1000))+','+song.__str__()+'\n'
-        f.write(newstring)
+        f.write(unicode(newstring))
         newstring = song.location
         newstring = string.replace(newstring,'%20',' ')
         newstring = string.replace(newstring,'%5B','[')
