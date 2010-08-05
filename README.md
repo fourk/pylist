@@ -140,7 +140,7 @@ above as Algorithm 1. Returns a list of songs of songcount length.
 make_playlist. Uses the selection algorithm described above as Algorithm 2.
 
 
-Future Development:
+**Future Development:**
 
 I would like to re-build the user interface for the application, allowing all actions currently possible from
 the command-line to be possible through an intuitive GUI. I would also like to
@@ -160,7 +160,7 @@ item encountered of a particular song name and particular track name, ignoring
 any duplicate tracks, potentially ones with higher audio quality.
 
 
-Problem areas:
+**Problem areas:**
 
 The difference between unicode strings and ascii strings was a huge problem
 area throughout development. However, I'm fairly certain that at this point
@@ -176,22 +176,29 @@ allowing for pickle to save the objects.
 
 Directions for use:
 
-Run lfmgather.py in your python console of choice, then execute the following
-command: **makeprogress()**. You will then be prompted to perform an iTunes
-library export and put the Library.xml file in the same directory as
-lfmgather.py. You can then call makeprogress() and have it perform the data
-gathering necessary and advance from Library.xml to itunes.db to
-incompleteartists.db, which is finally converted into artists.db. This whole
-process may take several hours, I would recommend running it overnight,
-depending on the size of your music library. Once lfmgather has created an
-artists.db file, you have all the necessary data stored clientside to perform
+  * Perform an iTunes library export (File -> Library -> Export Library from within iTunes)
+and put the Library.xml file in the same directory as lfmgather.py.
+
+  * Run lfmgather.py interactively in your python console of choice. 
+
+  * Once you've loaded lfmgather.py, execute the following command: **makeprogress()**. 
+
+  * You can then watch as pylistfm performs the data
+gathering necessary and advances from **Library.xml** to **itunes.db** to
+**incompleteartists.db**, which is finally converted into **artists.db**.
+
+This whole process may take several hours, depending on the size of your library.
+Once lfmgather has created an artists.db file, you have all the necessary data stored clientside to perform
 playlist generation. At that point, any time you run lfmgather.py, you can
-execute the command: **artists = datamgmt.load('artists.db')** followed by
-**songs = filters.make_playlist(artists, n) **or **songs =
-filters.make_playlist2(artists,n) **where n is equal to the number of songs
-you want on the generated playlist. Assuming you are using this on a mac, you
-can then use the command **datamgmt.make_m3u_osx(songs)** which will result in
-a m3u8 playlist of those songs being saved as playlistnew.m3u in the current
+execute the commands: 
+
+  * **artists = datamgmt.load('artists.db')**
+  * **songs = filters.make\_playlist(artists, n)** or **songs =
+filters.make\_playlist2(artists, n)** where n is equal to the number of songs
+you want on the generated playlist. 
+  * **datamgmt.make\_m3u\_osx(songs)** or **datamgmt.make_m3u(songs)** (osx or windows, respectively)
+  
+which will result in a m3u8 playlist of those songs being saved as playlistnew.m3u in the current
 working directory. Once you've called a make_playlist function, the tracks
 which are chosen are removed from artists, so you'll have to reload artists.db
 afterwards if you want songs from the first playlist to potentially end up in
@@ -205,8 +212,5 @@ documented features *should* be fully functional at this point, and most
 errors have try/except statements in the code that attempt to work around
 situations where I have encountered errors so far, as I work toward figuring
 out more specifically what causes some of the errors and attempt to correct
-them before they happen. I've included copies of my personal artists.db and
-Library.xml files, in a subfolder, if you want to test features without the
-ability to create playlists which will play on your computer using your own
-music.
+them before they happen.
 
