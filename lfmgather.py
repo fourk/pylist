@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
+debug=True
 
 __version__ = '0.2.0'
 __doc__ = 'A Python module that creates last.fm playlists'
@@ -121,7 +122,6 @@ def get_lfm_info(itunes_library):
     #10/12/09: currently saves list of Hybrid_Track objects
     try:
         artists = []
-        print 'woop'
         artistnames=[]
         for track in tracks:
             if track.get_artist().get_name() not in artistnames:
@@ -138,7 +138,8 @@ def get_lfm_info(itunes_library):
     print 'saving!'
     datamgmt.save(artists,'incompleteartists.db')
     datamgmt.save(fails,'failedtracks.db')
-
+    if debug==True:
+        return artists,fails
 #---------- External Data Gathering -----------#
 def process_info(fname='incompleteartists.db',v=False): #get playcount info for all artists, returns a new list of artists
     """Gets all playcount info for all artist objects. v=verbose"""
@@ -289,3 +290,6 @@ def makeprogress():
             done = True
         if done == False:
             time.sleep(10)
+if __name__=='__main__':
+	makeprogress()
+

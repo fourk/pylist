@@ -25,9 +25,12 @@ import codecs
 def save(data,filename): #saves data as filename
     """Saves data in a given filename"""
     file = open(filename,'wb')
-    pickle.dump(data,file,2)
-    file.close()
-    print 'data saved!'
+    try:
+        pickle.dump(data,file,2)
+        print 'data saved!'
+    except:
+        print 'ERROR SAVING. Are you using ipython? If so, don\'t.'
+    file.close() 
 def load(fname):
     f = open(fname,'rb')
     data = pickle.load(f)
