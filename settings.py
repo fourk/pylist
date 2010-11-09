@@ -8,7 +8,6 @@ def deprint(s):
 	if DEBUG:
 		print s
 		
-API_SECRET = '2eabc2dd9f2d1364a7c84bcffdbc9901'
 API = 'a9785e0b1bb8deb9eb4e090b3aba9613'
 HOME = '/Users/jburkhart/work/pylist'
 
