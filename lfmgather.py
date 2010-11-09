@@ -21,7 +21,7 @@ __version__ = '0.2.0'
 __doc__ = 'A Python module that creates last.fm playlists'
 __author__ = 'James Burkhart'
 __email__ = 'jburkhart@gm.slc.edu'
-__copyright__ = 'James Burkhart 2008-09 under GNU GPL v3. Dependent upon the included pylast module, copyright Amr Hassan 2008 under GNU GPL v2.'
+__copyright__ = 'James Burkhart 2008-10 under GNU GPL v3. Dependent upon the included pylast module, copyright Amr Hassan 2008 under GNU GPL v2.'
 ############################
 ##########TO DO:############
 # Find redundancies in pylast.Track objects and functions which use them.

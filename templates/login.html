@@ -1,0 +1,33 @@
+<head>
+  <title>Rockband Last.fm Mashup</title>
+  <link href="/site_media/css/styles.css" type="text/css" media="screen" rel="stylesheet">
+ </head>
+<body id="login">
+  <div id="topspace"></div>
+  <div id="wrapper">
+    <div id="content">
+      <div id="header">
+        <h1>
+          <a href>
+            <img src="/site_media/logo.png" alt="LastFMRockband">
+          </a>
+        </h1>
+      </div>
+      <div id="banner" class="banner">
+        <h2>Login<h2>
+      </div>
+      <form action="/" method="post">
+        <fieldset class="form">
+          <p>
+            {{ form.username.errors }}
+            <label for="username">Last.fm Username:</label>
+            {{ form.username }}
+          </p>
+        </fieldset>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    
+    
+      
+      
