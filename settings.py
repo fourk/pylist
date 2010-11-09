@@ -125,7 +125,7 @@ except Exception, e:
 	
 if locals().get('DJANGO_EXTENSIONS'):
 	INSTALLED_APPS=INSTALLED_APPS+('django_extensions',)
-	
+	 
 if locals().get('DEBUG_TOOLBAR'):
 	INSTALLED_APPS=INSTALLED_APPS+('debug_toolbar',)
 	MIDDLEWARE_CLASSES=MIDDLEWARE_CLASSES+('debug_toolbar.middleware.DebugToolbarMiddleware',)
